@@ -6,10 +6,10 @@ import ConnectWallet from "./ConnectWallet";
 const NewNavbar = () => {
   const router = useRouter();
   return (
-    <div className="flex items-center justify-between px-20 py-4">
+    <div className="flex items-center justify-between px-20 py-2">
       <div
         onClick={() => router.push("/")}
-        className="text-[36px] font-bold cursor-pointer"
+        className="text-[32px] font-bold cursor-pointer"
       >
         Aletheia
       </div>

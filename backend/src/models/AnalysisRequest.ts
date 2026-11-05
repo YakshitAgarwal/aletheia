@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { randomUUID } from "crypto";
 
-const requestSchema = new Schema(
+const analysisRequestSchema = new Schema(
   {
     // Unique identifier
     requestId: {
@@ -74,8 +74,8 @@ const requestSchema = new Schema(
     verification: {
       status: {
         type: String,
-        enum: ["PENDING", "IN_PROGRESS", "COMPLETED"],
-        default: "PENDING",
+        enum: ["NONE", "PENDING", "IN_PROGRESS", "COMPLETED"],
+        default: "NONE",
       },
       totalClaims: Number,
       incorrectClaims: Number,
@@ -111,21 +111,13 @@ const requestSchema = new Schema(
       ],
       default: "CREATED",
     },
-
-    // Hedera smart contract references
-    hedera: {
-      chainId: {
-        type: Number,
-        default: 296,
-      },
-      contractAddress: String,
-      onChainRequestId: String,
-      escrowTransactionHash: String,
-    },
   },
   { timestamps: true },
 );
 
-const Request = mongoose.model("Request", requestSchema);
+const AnalysisRequest = mongoose.model(
+  "AnalysisRequest",
+  analysisRequestSchema,
+);
 
-export default Request;
+export default AnalysisRequest;
